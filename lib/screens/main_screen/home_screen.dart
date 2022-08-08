@@ -7,7 +7,122 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blueGrey[200],
-      drawer: const Drawer(),
+      drawer: Drawer(
+        backgroundColor: Colors.green,
+        child: ListView(
+          children: [
+            DrawerHeader(
+              child: Row(
+                children: [
+                  const CircleAvatar(
+                    radius: 50,
+                    backgroundColor: Colors.blueAccent,
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage("assets/images/vegilogo.png"),
+                      backgroundColor: Colors.white,
+                      radius: 45,
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Welcome Guest",
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      Container(
+                        height: 30,
+                        width: 60,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white, width: 2),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: const Center(
+                          child: Text(
+                            "Login",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            customListTile(icon: Icons.home_outlined, title: "Home"),
+            customListTile(
+                icon: Icons.shopping_bag_outlined, title: "Review Cart"),
+            customListTile(icon: Icons.person_outline, title: "Profile"),
+            customListTile(
+                icon: Icons.notifications_none_outlined, title: "Notification"),
+            customListTile(
+                icon: Icons.star_border_outlined, title: "Rating & Review"),
+            customListTile(
+                icon: Icons.help_center_outlined, title: "Help Center"),
+            customListTile(icon: Icons.format_quote_outlined, title: "FAQ's"),
+            Container(
+              margin: const EdgeInsets.only(top: 20),
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Contact Us",
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Row(
+                    children: const [
+                      Text(
+                        "Call Us :",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        "+92 300 1234567",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Row(
+                    children: const [
+                      Text(
+                        "Mail US :",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        "vegi.customer@email.com",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: Colors.green,
@@ -65,6 +180,16 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  ListTile customListTile({required icon, required title}) {
+    return ListTile(
+      leading: Icon(icon, color: Colors.white),
+      title: Text(
+        title,
+        style: TextStyle(fontSize: 18, color: Colors.white),
       ),
     );
   }
